@@ -1,4 +1,4 @@
 .vscode
 py/venv3/**/*
-__pycache__/**/*
-.pytest_cache/**/*
+py/__pycache__/**/*
+py/.pytest_cache/**/*
