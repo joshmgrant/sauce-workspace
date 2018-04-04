@@ -10,13 +10,13 @@ class TestTheInternet(TestCase):
         desired_cap = {
             'browserName': "chrome",
             'version': "62",
-            'build': "pybuild-1",
-            'tags': [ "python" ]
+            'tags': [ "python" ],
+            'name': 'PyCase'
         }
         _user = os.environ['SAUCE_USER']
         _key = os.environ['SAUCE_KEY']
         url = 'http://{}:{}@ondemand.saucelabs.com:80/wd/hub'.format(_user, _key)
-        print(url)
+
         self.driver = webdriver.Remote(
             command_executor=url,
             desired_capabilities=desired_cap)
@@ -29,7 +29,7 @@ class TestTheInternet(TestCase):
 
         assert self.driver.title == 'The Internet'
 
-    def test_form_auth(self):
+    def est_form_auth(self):
         self.driver.get('http://the-internet.herokuapp.com/login')
 
         self.driver.find_element_by_id('username').send_keys('tomsmith')
