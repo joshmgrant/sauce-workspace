@@ -2,3 +2,4 @@
 py/venv3/**/*
 py/__pycache__/**/*
 py/.pytest_cache/**/*
+hellojava/out/**/*
