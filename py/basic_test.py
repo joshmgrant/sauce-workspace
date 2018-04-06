@@ -9,12 +9,13 @@ class TestTheInternet(TestCase):
     def setUp(self):
         desired_cap = {
             'browserName': "chrome",
+            'platformName': "Windows 10",
             'version': "62",
             'tags': [ "python" ],
-            'name': 'PyCase'
+            'build': 'Py2'
         }
-        _user = os.environ['SAUCE_USER']
-        _key = os.environ['SAUCE_KEY']
+        _user = os.environ['SAUCE_USERNAME']
+        _key = os.environ['SAUCE_ACCESS_KEY']
         url = 'http://{}:{}@ondemand.saucelabs.com:80/wd/hub'.format(_user, _key)
 
         self.driver = webdriver.Remote(
@@ -28,15 +29,6 @@ class TestTheInternet(TestCase):
         self.driver.get('http://the-internet.herokuapp.com')
 
         assert self.driver.title == 'The Internet'
-
-    def est_form_auth(self):
-        self.driver.get('http://the-internet.herokuapp.com/login')
-
-        self.driver.find_element_by_id('username').send_keys('tomsmith')
-        self.driver.find_element_by_id('password').send_keys('SuperSecretPassword!')
-        self.driver.find_element_by_class_name('radius').click()
-
-        assert self.driver.find_element_by_class_name('icon-lock').is_displayed()
 
     def test_checkboxes(self):
         self.driver.get('http://the-internet.herokuapp.com/checkboxes')
